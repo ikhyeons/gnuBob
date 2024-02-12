@@ -9,7 +9,7 @@ interface DayInBob extends RowDataPacket {
 
 type DataSet<T> = [T[], FieldPacket[]];
 
-const job = schedule.scheduleJob("0 30 1 * * *", async () => {
+async function getBob() {
   const conn = await getConnection();
 
   //확인로직
@@ -38,4 +38,10 @@ const job = schedule.scheduleJob("0 30 1 * * *", async () => {
     conn.release();
   }
   conn.release();
+}
+
+getBob();
+
+const job = schedule.scheduleJob("0 30 1 * * *", async () => {
+  getBob();
 });

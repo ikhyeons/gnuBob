@@ -31,8 +31,8 @@ app.get("/", async (req: Request, res: Response) => {
 });
 
 app.get("/download", async (req: Request, res: Response) => {
-  const filepath = `${__dirname}/releaseFile/GNU_BOB_v1.3.3.zip`;
-  const filename = "GNU_BOB_v1.3.3.zip";
+  const filepath = `${__dirname}/releaseFile/GNU_BOB_v1.3.5.zip`;
+  const filename = "GNU_BOB_v1.3.5.zip";
 
   console.log("다운했습니다.");
   if (fs.existsSync(filepath)) {
