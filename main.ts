@@ -13,20 +13,16 @@ interface BobInfo extends RowDataPacket {
 type DataSet<T> = [T[], FieldPacket[]];
 
 app.get("/", async (req: Request, res: Response) => {
+  const conn = await getConnection();
   try {
-    const conn = await getConnection();
-    try {
-      const getQuery = "SELECT menu, day FROM bob ORDER BY day DESC LIMIT 1";
-      const [thatDayData]: DataSet<BobInfo> = await conn.query(getQuery);
-      conn.release();
-      const returnData = JSON.parse(thatDayData[0].menu);
-      return res.json(returnData);
-    } catch (e) {
-      console.log(e);
-      conn.release();
-    }
+    const getQuery = "SELECT menu, day FROM bob ORDER BY day DESC LIMIT 1";
+    const [thatDayData]: DataSet<BobInfo> = await conn.query(getQuery);
+    conn.release();
+    const returnData = JSON.parse(thatDayData[0].menu);
+    return res.json(returnData);
   } catch (e) {
     console.log(e);
+    conn.release();
   }
 });
 
