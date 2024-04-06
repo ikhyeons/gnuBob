@@ -8,4 +8,4 @@ RUN npm install pm2 nodemon ts-node -g
 
 COPY ./ ./
 
-CMD ["npm","run start"]
+CMD ["npm run start"]
