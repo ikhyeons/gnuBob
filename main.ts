@@ -3,8 +3,6 @@ import getConnection from "./connection";
 import getBobFunc from "./getBobFunc";
 import schedule from "node-schedule";
 
-getBob();
-
 const job = schedule.scheduleJob("0 0 6 * * *", async () => {
   getBob();
 });

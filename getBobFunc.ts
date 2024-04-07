@@ -3,7 +3,7 @@ import chrome from "selenium-webdriver/chrome";
 export default async function getCrawl() {
   async function getGaja() {
     let driver = await new Builder()
-      .forBrowser(Browser.FIREFOX)
+      .forBrowser(Browser.CHROME)
       .setChromeOptions(
         new chrome.Options()
           .addArguments("--headless")
@@ -82,7 +82,16 @@ export default async function getCrawl() {
   }
 
   async function getChilam() {
-    let driver = await new Builder().forBrowser(Browser.CHROME).build();
+    let driver = await new Builder()
+      .forBrowser(Browser.CHROME)
+      .setChromeOptions(
+        new chrome.Options()
+          .addArguments("--headless")
+          .addArguments("--disable-gpu")
+          .addArguments("--no-sandbox")
+          .addArguments("--disable-dev-shm-usage")
+      )
+      .build();
 
     const url =
       "https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341";
@@ -157,8 +166,8 @@ export default async function getCrawl() {
     }
   }
 
-  const cbob = await getChilam();
   const gbob = await getGaja();
+  const cbob = await getChilam();
 
   return {
     c: { bf: cbob[0], lc: cbob[1], dn: cbob[2] },
