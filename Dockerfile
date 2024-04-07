@@ -5,6 +5,7 @@ WORKDIR /usr/src/gnubob
 COPY package.json ./
 RUN npm install
 RUN npm install pm2 nodemon ts-node -g
+RUN apt update
 RUN apt-get install default-jre
 COPY ./ ./
 
