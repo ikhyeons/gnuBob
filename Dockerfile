@@ -6,10 +6,10 @@ COPY package.json ./
 ENV ACCEPT_EULA=Y
 RUN npm install
 RUN npm install pm2 nodemon ts-node -g
-
-RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-RUN apt-get update
-RUN apt-get install install google-chrome-stable
+RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+RUN apt update
+RUN apt install ./google-chrome-stable_current_amd64.deb
+RUN google-chrome --version
 COPY ./ ./
 
 CMD ["ts-node", "main.ts"]
