@@ -2,6 +2,9 @@ import { Builder, Browser, By, Capabilities } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 export default async function getCrawl() {
   async function getGaja() {
+    const service = new chrome.ServiceBuilder("/usr/bin/chromedriver").build();
+    chrome.setDefaultService(service);
+
     let driver = await new Builder()
       .forBrowser(Browser.CHROME)
       .setChromeOptions(
@@ -82,6 +85,9 @@ export default async function getCrawl() {
   }
 
   async function getChilam() {
+    const service = new chrome.ServiceBuilder("/usr/bin/chromedriver").build();
+    chrome.setDefaultService(service);
+
     let driver = await new Builder()
       .forBrowser(Browser.CHROME)
       .setChromeOptions(
