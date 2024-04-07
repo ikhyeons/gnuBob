@@ -9,6 +9,7 @@ export default async function getCrawl() {
           .addArguments("--headless")
           .addArguments("--disable-gpu")
           .addArguments("--no-sandbox")
+          .addArguments("--disable-dev-shm-usage")
       )
       .build();
 
