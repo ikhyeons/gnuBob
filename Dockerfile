@@ -16,7 +16,6 @@ RUN wget -O /tmp/chromedriver.zip http://chromedriver.storage.googleapis.com/` c
 
 RUN mkdir chrome
 RUN unzip /tmp/chromedriver.zip chromedriver -d /usr/src/chrome
-COPY requirements.txt ./
 RUN google-chrome --version
 
 COPY ./ ./
