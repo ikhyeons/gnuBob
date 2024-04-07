@@ -2,15 +2,16 @@ import { Builder, Browser, By, Capabilities } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 export default async function getCrawl() {
   async function getGaja() {
-    let driver = await new Builder().forBrowser(Browser.FIREFOX).build();
-
-    // .setChromeOptions(
-    //   new chrome.Options()
-    //     .addArguments("--headless")
-    //     .addArguments("--disable-gpu")
-    //     .addArguments("--no-sandbox")
-    //     .addArguments("--disable-dev-shm-usage")
-    // )
+    let driver = await new Builder()
+      .forBrowser(Browser.FIREFOX)
+      .setChromeOptions(
+        new chrome.Options()
+          .addArguments("--headless")
+          .addArguments("--disable-gpu")
+          .addArguments("--no-sandbox")
+          .addArguments("--disable-dev-shm-usage")
+      )
+      .build();
 
     const url =
       "https://www.gnu.ac.kr/main/ad/fm/foodmenu/selectFoodMenuView.do?mi=1341";
