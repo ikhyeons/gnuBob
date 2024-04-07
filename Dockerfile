@@ -9,9 +9,9 @@ RUN npm install pm2 nodemon ts-node -g
 
 RUN apt update
 RUN wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-RUN dpkg -i google-chrome-stable_current_amd64.deb
-
+RUN apt install -y ./google-chrome-stable_current_amd64.deb
 RUN google-chrome --version
-COPY ./ ./
 
+
+COPY ./ ./
 CMD ["ts-node", "main.ts"]
